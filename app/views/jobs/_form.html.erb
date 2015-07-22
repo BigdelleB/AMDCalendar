@@ -1,0 +1,46 @@
+<%= form_for(@job) do |f| %>
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+      <% @job.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Customer_name %><br>
+    <%= f.text_field :Customer_name %>
+  </div>
+  <div class="field">
+    <%= f.label :Zipcode %><br>
+    <%= f.text_field :Zipcode %>
+  </div>
+  <div class="field">
+    <%= f.label :Street_Address %><br>
+    <%= f.text_field :Street_Address %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :Job_Day_needs_to_be_completed %><br>
+    <h>Enter "DC" if you dont care about the day</h>
+    <%= f.text_field :Job_Day %>
+  </div>
+  <!-- <div class="field">
+    <%= f.label :day_id %><br>
+    <%= f.number_field :day_id %>
+  </div> -->
+  <!-- <div class="field">
+    <%= f.label :time_of_day %><br>
+    <%= f.text_field :time_of_day %>
+  </div> -->
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

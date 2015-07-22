@@ -1,0 +1,275 @@
+<p id="notice"><%= notice %></p>
+
+<!-- <h1>Listing Jobs</h1> -->
+
+
+ <h1>Listing Jobs</h1>
+     <table>    
+
+<h3><%= link_to 'New Job', new_job_path %></h3>
+
+<TABLE BORDER=3 CELLSPACING=3 CELLPADDING=3> 
+
+  <TR> 
+    <TD ALIGN=center, width="300px"><b>Mon</b></TD>
+    <TD ALIGN=center, width="300px"><b>Tue</b></TD>
+    <TD ALIGN=center, width="300px"><b>Wed</b></TD>
+    <TD ALIGN=center, width="300px"><b>Thu</b></TD>
+    <TD ALIGN=center, width="300px"><b>Fri</b></TD>
+
+  </TR>
+
+
+
+           <p>                          
+
+                              <%if Job.count>0%>
+                                <% currentjob=Job.last %>
+                                 
+
+                                  
+                                  <%if currentjob.Job_Day.casecmp("dc")==0%>
+                                    <%setDay_id_default(currentjob)%>
+                                    <%initialize_fields(currentjob)%>
+                                    <%extractJSON()%>
+                                    
+                                    
+                                      <%min=100.0%>
+                                        <%xcurrentjob=getCoordinates()[0]%>
+                                        <%ycurrentjob=getCoordinates()[1]%>
+                                        
+                                       
+
+                                        <%Job.all.each do |job|%>
+
+                                          
+
+                                          <%initialize_fields(job)%>
+                                          <%setDay_id_default(job)%>
+                                          <%if verifyFields()==true && job.Customer_name!=currentjob.Customer_name && job.Street_Address!=currentjob.Street_Address%>
+                                            
+                                            
+
+                                           
+
+                                            <%extractJSON()%>
+                                            <%arr=getCoordinates()%>
+   
+                                            <%if arr!=nil%>
+
+                                              <% xdiff=(arr[0]-xcurrentjob)*(arr[0]-xcurrentjob)%>
+                                              <% ydiff=(arr[1]-ycurrentjob)*(arr[1]-ycurrentjob)%>
+                                           
+
+                                               
+                                              <%if Math.sqrt(xdiff+ydiff)<min%>
+
+
+                                                <%min=Math.sqrt(xdiff+ydiff)%>
+
+                                                <%minid=job.day_id%>
+                                               
+                                                
+                                                
+                                                <%setDay_id(currentjob,minid)%>
+                                                <%currentjob.update_attributes(:day_id => minid)%>
+                                                
+                                                <%currentjob.save%>
+                                                
+                                            <%end%>
+
+                                          <%end%>
+                                         <%end%>
+
+                                        <%end%>
+                                        
+                                      <%end%> 
+   <%end%> 
+                                  
+
+                      </p>
+                              
+     <TR>
+                                   
+    <TD ALIGN=center, width="300px", height="300px"> 
+                              
+
+                                 <%Job.all.each do |job| %>
+                           
+                                  
+
+                                      <%if job.Job_Day.casecmp("monday")==0 || job.day_id==0%>
+                                          <%job.update_attributes(:day_id=>0)%>
+
+                                        <p><%= job.Customer_name %>
+                                      </p>
+                     
+                                          <%= link_to 'Show', job %>
+                                          <%= link_to 'Edit', edit_job_path(job) %>
+                                          <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                          
+                                  
+
+                                      
+                               
+
+                                   <%elsif job.Job_Day.casecmp("dc")==0 && job.day_id==0 %>
+                                        
+                                      
+                                      <%job.update_attributes(:Job_Day =>"Monday")%>
+                                    <p><%=job.Customer_name %>
+                    
+                                      <%= link_to 'Show', job %>
+                                      <%= link_to 'Edit', edit_job_path(job) %>
+                                      <%= link_to 'Destroy',job, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+                                  <%end%>
+                                   <%end%>
+                       
+                              
+</TD>
+     
+    <TD ALIGN=center, width="300px"> 
+                                <% Job.all.each do |job| %>
+
+                                        <%if job.Job_Day.casecmp("tuesday")==0 || job.day_id==1%>
+                                            <p><%= job.Customer_name %>
+                                                <%job.update_attributes(:day_id=>1)%>
+                                        
+                                          </p>
+                                        
+                                            <%= link_to 'Show', job %>
+                                            <%= link_to 'Edit', edit_job_path(job) %>
+                                            <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                     
+      
+                            
+
+                              
+                             
+                                   <%elsif job.Job_Day.casecmp("dc")==0 && job.day_id==1 %>
+                                        
+                                
+                                      <%job.update_attributes(:Job_Day =>"Tuesday")%>
+                                    <p><%= job.Customer_name %>
+                    
+                                      <%= link_to 'Show', job %>
+                                      <%= link_to 'Edit', edit_job_path(job) %>
+                                      <%= link_to 'Destroy',job, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+                                  <%end%>
+                                   
+                                   <%end%>
+                              
+                     </TD>      
+                        
+    
+    <TD ALIGN=center, width="300px">  
+                             <% @jobs.each do |job| %>
+                                    <%if job.Job_Day.casecmp("wednesday")==0 || job.day_id==2%>
+                                          <p><%= job.Customer_name %>
+                                              <%job.update_attributes(:day_id=>2)%>
+                                       
+                                          </p>
+                                    
+                                       <%= link_to 'Show', job %>
+                                        <%= link_to 'Edit', edit_job_path(job) %>
+                                        <%= link_to 'Destroy',job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                     
+                         
+
+                                      
+
+                                     <%elsif job.Job_Day.casecmp("dc")==0 && job.day_id==2 %>
+                                      
+                                    <%job.update_attributes(:Job_Day =>"Wednesday")%>
+                                    <p><%= job.Customer_name %>
+                    
+                                      <%= link_to 'Show', job %>
+                                      <%= link_to 'Edit', edit_job_path(job) %>
+                                      <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                      </p>
+                                  <%end%>
+                                   <%end%>
+                              
+</TD>
+
+
+ 
+    <TD ALIGN=center, width="300px">  
+                                  <% @jobs.each do |job| %>
+                                          <%if job.Job_Day.casecmp("thursday")==0 || job.day_id==3%>
+                                            <p><%=job.Customer_name %>
+                                                  <%job.update_attributes(:day_id=>3)%>
+                                           
+                                    
+                                            </p>
+                                           
+                                              <%= link_to 'Show', job %>
+                                              <%= link_to 'Edit', edit_job_path(job) %>
+                                              <%= link_to 'Destroy',job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                   
+                       
+                       
+                                      
+                                  <%elsif job.Job_Day.casecmp("dc")==0 && job.day_id==3 %>
+                                     
+                                    <%job.update_attributes(:Job_Day =>"Thursday")%>
+                                    <p><%=job.Customer_name %>
+                    
+                                      <%= link_to 'Show', job %>
+                                      <%= link_to 'Edit', edit_job_path(job) %>
+                                      <%= link_to 'Destroy',job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                      </p>
+                                  <%end%>
+                                   <%end%>
+                                  
+
+
+
+                            
+
+</TD>
+                            
+
+    <TD ALIGN=center, width="300px">  
+                                <% @jobs.each do |job| %>
+                                        <%if job.Job_Day.casecmp("friday")==0 || job.day_id==4%>
+                                            <p><%= job.Customer_name %>
+                                                <%job.update_attributes(:day_id=>4)%>
+                                         
+                                            </p>
+                                         
+                                            <%= link_to 'Show', job %>
+                                            <%= link_to 'Edit', edit_job_path(job) %>
+                                            <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                         
+                                
+                                    
+
+                         
+                                      
+
+                                  <%elsif job.Job_Day.casecmp("dc")==0 && job.day_id==4  %>
+                                    
+                                    <%job.update_attributes(:Job_Day =>"Friday")%>
+                                    <p><%= job.Customer_name %>
+                                        
+                                      <%= link_to 'Show', job %>
+                                      <%= link_to 'Edit', edit_job_path(job) %>
+                                      <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                      </p> 
+                                    <%end%>
+                                  <%end%>
+
+
+
+                              
+                           
+         </TD>             
+           
+  </TR>     
+
+</TABLE>
+ 
+
+
+                            

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Customer_name: MyString
+  Zipcode: MyString
+  Street_Address: MyString
+  state: MyString
+  Job_Day: MyString
+  day_id: 1
+  time_of_day: MyString
+
+two:
+  Customer_name: MyString
+  Zipcode: MyString
+  Street_Address: MyString
+  state: MyString
+  Job_Day: MyString
+  day_id: 1
+  time_of_day: MyString

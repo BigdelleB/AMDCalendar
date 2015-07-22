@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer name:</strong>
+  <%= @job.Customer_name %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @job.Zipcode %>
+</p>
+
+<p>
+  <strong>Street address:</strong>
+  <%= @job.Street_Address %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @job.state %>
+</p>
+
+<p>
+  <strong>Job day:</strong>
+  <%= @job.Job_Day %>
+</p>
+
+<p>
+  <strong>Day ID:</strong>
+  <%= @job.day_id %>
+</p>
+<!--
+<p>
+  <strong>Time of day:</strong>
+  <%= @job.time_of_day %>
+</p>
+ -->
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>
