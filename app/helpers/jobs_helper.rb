@@ -2,14 +2,7 @@ module JobsHelper
 	require 'net/http'
 	require 'open-uri'
 	require "openssl"
-	module OpenSSL
-	
-	module SSL
-		remove_const :VERIFY_PEER
-	end
-
-		OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
-	end
+	OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 	
 	@@API_KEY="AIzaSyDWP95Wa154Z72rg_pSkopK-7TAhx139CU";
 
