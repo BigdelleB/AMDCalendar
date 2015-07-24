@@ -9,6 +9,7 @@ module JobsHelper
 	end
 
 		OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+	end
 	
 	@@API_KEY="AIzaSyDWP95Wa154Z72rg_pSkopK-7TAhx139CU";
 
