@@ -17,6 +17,8 @@
     <TD ALIGN=center, width="300px"><b>Thu</b></TD>
     <TD ALIGN=center, width="300px"><b>Fri</b></TD>
 
+    
+
   </TR>
 
 
@@ -95,18 +97,21 @@
                               
 
                                  <%Job.all.each do |job| %>
-                           
+                                      <div id ='<%=color(job)%>'>
                                   
 
                                       <%if job.Job_Day.casecmp("monday")==0 || job.day_id==0%>
+                                         
+                                        
+                                        
+                                        <p><%= job.Customer_name %> 
                                           <%job.update_attributes(:day_id=>0)%>
-
-                                        <p><%= job.Customer_name %>
-                                      </p>
-                     
+                                        </p>
+                                        <div>
                                           <%= link_to 'Show', job %>
                                           <%= link_to 'Edit', edit_job_path(job) %>
-                                          <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                          <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }
+                                          %>
                                           
                                   
 
@@ -117,19 +122,22 @@
                                         
                                       
                                       <%job.update_attributes(:Job_Day =>"Monday")%>
-                                    <p><%=job.Customer_name %>
+                                    <p><%=job.Customer_name %></p>
                     
                                       <%= link_to 'Show', job %>
                                       <%= link_to 'Edit', edit_job_path(job) %>
-                                      <%= link_to 'Destroy',job, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+                                      <%= link_to 'Destroy',job, method: :delete, data: { confirm: 'Are you sure?' } %>
+
                                   <%end%>
-                                   <%end%>
-                       
+                                  </div>
+                                 <%end%>
+                                  
                               
 </TD>
      
     <TD ALIGN=center, width="300px"> 
                                 <% Job.all.each do |job| %>
+                                  <div id ='<=%color(job)%>'>
 
                                         <%if job.Job_Day.casecmp("tuesday")==0 || job.day_id==1%>
                                             <p><%= job.Customer_name %>
@@ -156,7 +164,7 @@
                                       <%= link_to 'Edit', edit_job_path(job) %>
                                       <%= link_to 'Destroy',job, method: :delete, data: { confirm: 'Are you sure?' } %></p>
                                   <%end%>
-                                   
+                                   </div>
                                    <%end%>
                               
                      </TD>      
@@ -164,6 +172,7 @@
     
     <TD ALIGN=center, width="300px">  
                              <% @jobs.each do |job| %>
+                               <div id ='<=%color(job)%>'>
                                     <%if job.Job_Day.casecmp("wednesday")==0 || job.day_id==2%>
                                           <p><%= job.Customer_name %>
                                               <%job.update_attributes(:day_id=>2)%>
@@ -188,6 +197,7 @@
                                       <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
                                       </p>
                                   <%end%>
+                                </div>
                                    <%end%>
                               
 </TD>
@@ -196,6 +206,7 @@
  
     <TD ALIGN=center, width="300px">  
                                   <% @jobs.each do |job| %>
+                                  <div id ='<=%color(job)%>'>
                                           <%if job.Job_Day.casecmp("thursday")==0 || job.day_id==3%>
                                             <p><%=job.Customer_name %>
                                                   <%job.update_attributes(:day_id=>3)%>
@@ -220,18 +231,15 @@
                                       <%= link_to 'Destroy',job, method: :delete, data: { confirm: 'Are you sure?' } %>
                                       </p>
                                   <%end%>
+                                  </div
                                    <%end%>
                                   
-
-
-
-                            
-
 </TD>
                             
 
     <TD ALIGN=center, width="300px">  
                                 <% @jobs.each do |job| %>
+                                  <div id ='<=%color(job)%>'>
                                         <%if job.Job_Day.casecmp("friday")==0 || job.day_id==4%>
                                             <p><%= job.Customer_name %>
                                                 <%job.update_attributes(:day_id=>4)%>
@@ -258,6 +266,7 @@
                                       <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
                                       </p> 
                                     <%end%>
+                                  </div>
                                   <%end%>
 
 

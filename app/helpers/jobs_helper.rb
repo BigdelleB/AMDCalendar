@@ -99,7 +99,16 @@ module JobsHelper
 	end
 
 	
+	def color(job)
+		if job.type_id!=nil
+			if job.type_id.casecmp("p")==0
+				return 'blue'
+			elsif job.type_id.casecmp("d")==0
+				return 'red'
+			end
+		end
 
+	end
 
 
 

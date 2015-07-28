@@ -8,6 +8,7 @@ class CreateJobs < ActiveRecord::Migration
       t.string :Job_Day
       t.integer :day_id
       t.string :time_of_day
+    
 
       t.timestamps null: false
     end
