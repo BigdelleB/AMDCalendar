@@ -2,8 +2,8 @@ module JobsHelper
 	require 'net/http'
 	require 'open-uri'
 	require "openssl"
-	OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE;
-	#OpenSSL::SSL::VERIFY_NONE;
+	OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE;   #if running locally onlocalhost, use this line
+	#OpenSSL::SSL::VERIFY_NONE;					# for heroku use this line
 	
 	@@API_KEY="AIzaSyDWP95Wa154Z72rg_pSkopK-7TAhx139CU";
 
