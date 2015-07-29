@@ -17,7 +17,9 @@
     <TD ALIGN=center, width="300px"><b>Thu</b></TD>
     <TD ALIGN=center, width="300px"><b>Fri</b></TD>
 
-    
+    <p class ="hello">
+      Hello
+    <p>
 
   </TR>
 
@@ -97,17 +99,19 @@
                               
 
                                  <%Job.all.each do |job| %>
-                                      <div id ='<%=color(job)%>'>
+                                    
                                   
 
                                       <%if job.Job_Day.casecmp("monday")==0 || job.day_id==0%>
                                          
                                         
                                         
-                                        <p><%= job.Customer_name %> 
+                                            <p class="<%=color(job)%>"><%= job.Customer_name %>  </p>
+                                        
+                                        
                                           <%job.update_attributes(:day_id=>0)%>
-                                        </p>
-                                        <div>
+                                      
+                                        
                                           <%= link_to 'Show', job %>
                                           <%= link_to 'Edit', edit_job_path(job) %>
                                           <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }
@@ -122,14 +126,16 @@
                                         
                                       
                                       <%job.update_attributes(:Job_Day =>"Monday")%>
-                                    <p><%=job.Customer_name %></p>
+                                   
+                                            <p class="<%=color(job)%>"><%= job.Customer_name %>
+                                      
                     
                                       <%= link_to 'Show', job %>
                                       <%= link_to 'Edit', edit_job_path(job) %>
                                       <%= link_to 'Destroy',job, method: :delete, data: { confirm: 'Are you sure?' } %>
-
+                                      </p>
                                   <%end%>
-                                  </div>
+                               
                                  <%end%>
                                   
                               
@@ -137,13 +143,16 @@
      
     <TD ALIGN=center, width="300px"> 
                                 <% Job.all.each do |job| %>
-                                  <div id ='<=%color(job)%>'>
+                                  
 
                                         <%if job.Job_Day.casecmp("tuesday")==0 || job.day_id==1%>
-                                            <p><%= job.Customer_name %>
+                                            <p>
+                                             
+                                                    <p class="<%=color(job)%>"><%= job.Customer_name %></p>
+                                         
                                                 <%job.update_attributes(:day_id=>1)%>
                                         
-                                          </p>
+                                          
                                         
                                             <%= link_to 'Show', job %>
                                             <%= link_to 'Edit', edit_job_path(job) %>
@@ -158,13 +167,15 @@
                                         
                                 
                                       <%job.update_attributes(:Job_Day =>"Tuesday")%>
-                                    <p><%= job.Customer_name %>
+                                     
+                                            <p class ="<%=color(job)%>"><%= job.Customer_name %></p>
+                                   
                     
                                       <%= link_to 'Show', job %>
                                       <%= link_to 'Edit', edit_job_path(job) %>
                                       <%= link_to 'Destroy',job, method: :delete, data: { confirm: 'Are you sure?' } %></p>
                                   <%end%>
-                                   </div>
+                                   
                                    <%end%>
                               
                      </TD>      
@@ -172,12 +183,17 @@
     
     <TD ALIGN=center, width="300px">  
                              <% @jobs.each do |job| %>
-                               <div id ='<=%color(job)%>'>
+                               
                                     <%if job.Job_Day.casecmp("wednesday")==0 || job.day_id==2%>
-                                          <p><%= job.Customer_name %>
+                                        
+                                            <p class="<%=color(job)%>"> <%= job.Customer_name %> 
+
+                                            
+
+                                         </div>    
                                               <%job.update_attributes(:day_id=>2)%>
                                        
-                                          </p>
+                                     
                                     
                                        <%= link_to 'Show', job %>
                                         <%= link_to 'Edit', edit_job_path(job) %>
@@ -190,14 +206,16 @@
                                      <%elsif job.Job_Day.casecmp("dc")==0 && job.day_id==2 %>
                                       
                                     <%job.update_attributes(:Job_Day =>"Wednesday")%>
-                                    <p><%= job.Customer_name %>
+                                      
+                                              <p class= "<%=color(job)%>"> <%=job.Customer_name %></p>
+                                
                     
                                       <%= link_to 'Show', job %>
                                       <%= link_to 'Edit', edit_job_path(job) %>
                                       <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
                                       </p>
                                   <%end%>
-                                </div>
+                            
                                    <%end%>
                               
 </TD>
@@ -206,13 +224,15 @@
  
     <TD ALIGN=center, width="300px">  
                                   <% @jobs.each do |job| %>
-                                  <div id ='<=%color(job)%>'>
+                                 
                                           <%if job.Job_Day.casecmp("thursday")==0 || job.day_id==3%>
-                                            <p><%=job.Customer_name %>
+                                           
+                                              <p class="<%=color(job)%>"><%= job.Customer_name %>     </p>
+                                            
                                                   <%job.update_attributes(:day_id=>3)%>
                                            
                                     
-                                            </p>
+                                       
                                            
                                               <%= link_to 'Show', job %>
                                               <%= link_to 'Edit', edit_job_path(job) %>
@@ -224,14 +244,16 @@
                                   <%elsif job.Job_Day.casecmp("dc")==0 && job.day_id==3 %>
                                      
                                     <%job.update_attributes(:Job_Day =>"Thursday")%>
-                                    <p><%=job.Customer_name %>
+                                  
+                                        <p class ="<%=color(job)%>"><%= job.Customer_name %></p>
+                                   
                     
                                       <%= link_to 'Show', job %>
                                       <%= link_to 'Edit', edit_job_path(job) %>
                                       <%= link_to 'Destroy',job, method: :delete, data: { confirm: 'Are you sure?' } %>
                                       </p>
                                   <%end%>
-                                  </div
+                             
                                    <%end%>
                                   
 </TD>
@@ -239,34 +261,33 @@
 
     <TD ALIGN=center, width="300px">  
                                 <% @jobs.each do |job| %>
-                                  <div id ='<=%color(job)%>'>
+                                 
                                         <%if job.Job_Day.casecmp("friday")==0 || job.day_id==4%>
-                                            <p><%= job.Customer_name %>
+                                        
+                                              <p class="<%=color(job)%>"><%= job.Customer_name %> </p>
+                                           
                                                 <%job.update_attributes(:day_id=>4)%>
                                          
-                                            </p>
+                                           
                                          
                                             <%= link_to 'Show', job %>
                                             <%= link_to 'Edit', edit_job_path(job) %>
                                             <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                         
-                                
-                                    
-
-                         
-                                      
+                     
 
                                   <%elsif job.Job_Day.casecmp("dc")==0 && job.day_id==4  %>
                                     
                                     <%job.update_attributes(:Job_Day =>"Friday")%>
-                                    <p><%= job.Customer_name %>
+                                    
+                                            <p class="<%=color(job)%>"><%= job.Customer_name %> </p> 
+                                    
                                         
                                       <%= link_to 'Show', job %>
                                       <%= link_to 'Edit', edit_job_path(job) %>
                                       <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                      </p> 
+                                     
                                     <%end%>
-                                  </div>
+                      
                                   <%end%>
 
 

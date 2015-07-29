@@ -17,7 +17,9 @@ module JobsHelper
 
 	@@JSON;
 
-	@@DAY_ID
+	@@DAY_ID;
+
+	@@COLOR;
 
 
 
@@ -102,13 +104,15 @@ module JobsHelper
 	def color(job)
 		if job.type_id!=nil
 			if job.type_id.casecmp("p")==0
-				return 'blue'
+				return "blue"
 			elsif job.type_id.casecmp("d")==0
-				return 'red'
+				return "red"
 			end
 		end
 
 	end
+
+	
 
 
 
